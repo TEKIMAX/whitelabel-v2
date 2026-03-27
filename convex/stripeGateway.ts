@@ -27,6 +27,7 @@ export const createStripeGateway = (stripeCustomerId?: string) => {
     return createOpenAI({
         apiKey: stripeAIGatewayKey,
         baseURL: "https://llm.stripe.com",
+        compatibility: 'compatible', // Force chat completions format — Stripe does not support the Responses API body format
         headers: headers,
         fetch: async (input: RequestInfo | URL, init?: RequestInit | undefined) => {
             // Unpack input pathing exactly explicitly to bypass edge Request object caching
