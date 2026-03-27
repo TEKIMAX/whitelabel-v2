@@ -42,6 +42,15 @@ export const createStripeGateway = (stripeCustomerId?: string) => {
             }
 
             console.log("STRIPE GATEWAY OVERRIDE:", urlString);
+            console.log("STRIPE DEBUG: key prefix:", stripeAIGatewayKey.substring(0, 15), "| customer:", resolvedCustomerId || "NONE");
+            
+            // Log the model being sent
+            if (init?.body && typeof init.body === 'string') {
+                try {
+                    const b = JSON.parse(init.body);
+                    console.log("STRIPE DEBUG: model:", b.model, "| has messages:", !!b.messages, "| has input:", !!b.input);
+                } catch {}
+            }
 
             // Stripe Gateway requires 'max_tokens' for Anthropic models, but AI SDK v3 may send 'max_completion_tokens'
             // However, OpenAI's latest models (like o1, o3, gpt-5) STRICTLY require 'max_completion_tokens' and reject 'max_tokens'.
