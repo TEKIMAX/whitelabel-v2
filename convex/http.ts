@@ -59,6 +59,21 @@ function corsOptionsResponse(request: Request): Response {
     return new Response(null, { status: 204, headers });
 }
 
+// ── Streaming Chat Route ──
+import { streamResponse } from "./chat";
+
+http.route({
+    pathPrefix: "/api/chat",
+    method: "POST",
+    handler: streamResponse,
+});
+
+http.route({
+    pathPrefix: "/api/chat",
+    method: "OPTIONS",
+    handler: streamResponse,
+});
+
 // ── Share Link Download Route ──
 http.route({
     pathPrefix: "/api/share/",
