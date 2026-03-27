@@ -1,0 +1,334 @@
+[
+    {
+        "code": "541511",
+        "title": "Custom Computer Programming Services"
+    },
+    {
+        "code": "541512",
+        "title": "Computer Systems Design Services"
+    },
+    {
+        "code": "541519",
+        "title": "Other Computer Related Services"
+    },
+    {
+        "code": "518210",
+        "title": "Computing Infrastructure Providers, Data Processing, Web Hosting"
+    },
+    {
+        "code": "511210",
+        "title": "Software Publishers"
+    },
+    {
+        "code": "519130",
+        "title": "Internet Publishing and Broadcasting"
+    },
+    {
+        "code": "519190",
+        "title": "All Other Information Services"
+    },
+    {
+        "code": "334111",
+        "title": "Electronic Computer Manufacturing"
+    },
+    {
+        "code": "334112",
+        "title": "Computer Storage Device Manufacturing"
+    },
+    {
+        "code": "334118",
+        "title": "Computer Terminal and Other Peripheral Equipment Manufacturing"
+    },
+    {
+        "code": "517311",
+        "title": "Wired Telecommunications Carriers"
+    },
+    {
+        "code": "517312",
+        "title": "Wireless Telecommunications Carriers"
+    },
+    {
+        "code": "517410",
+        "title": "Satellite Telecommunications"
+    },
+    {
+        "code": "517911",
+        "title": "Telecommunications Resellers"
+    },
+    {
+        "code": "517919",
+        "title": "All Other Telecommunications"
+    },
+    {
+        "code": "523110",
+        "title": "Investment Banking and Securities Dealing"
+    },
+    {
+        "code": "523120",
+        "title": "Securities Brokerage"
+    },
+    {
+        "code": "523130",
+        "title": "Commodity Contracts Dealing"
+    },
+    {
+        "code": "523910",
+        "title": "Miscellaneous Intermediation"
+    },
+    {
+        "code": "523991",
+        "title": "Trust, Fiduciary, and Custody Activities"
+    },
+    {
+        "code": "522110",
+        "title": "Commercial Banking"
+    },
+    {
+        "code": "522130",
+        "title": "Credit Unions"
+    },
+    {
+        "code": "522210",
+        "title": "Credit Card Issuing"
+    },
+    {
+        "code": "522220",
+        "title": "Sales Financing"
+    },
+    {
+        "code": "522310",
+        "title": "Mortgage and Nonmortgage Loan Brokers"
+    },
+    {
+        "code": "541611",
+        "title": "Administrative Management Consulting Services"
+    },
+    {
+        "code": "541612",
+        "title": "Human Resources Consulting Services"
+    },
+    {
+        "code": "541613",
+        "title": "Marketing Consulting Services"
+    },
+    {
+        "code": "541614",
+        "title": "Process, Physical Distribution, and Logistics Consulting"
+    },
+    {
+        "code": "541618",
+        "title": "Other Management Consulting Services"
+    },
+    {
+        "code": "541711",
+        "title": "Research and Development in Biotechnology"
+    },
+    {
+        "code": "541712",
+        "title": "Research and Development in Physical, Engineering, and Life Sciences"
+    },
+    {
+        "code": "541713",
+        "title": "Research and Development in Nanotechnology"
+    },
+    {
+        "code": "541714",
+        "title": "Research and Development in Social Sciences and Humanities"
+    },
+    {
+        "code": "541715",
+        "title": "Research and Development in Agricultural Sciences"
+    },
+    {
+        "code": "621111",
+        "title": "Offices of Physicians (except Mental Health Specialists)"
+    },
+    {
+        "code": "621112",
+        "title": "Offices of Physicians, Mental Health Specialists"
+    },
+    {
+        "code": "621210",
+        "title": "Offices of Dentists"
+    },
+    {
+        "code": "621310",
+        "title": "Offices of Chiropractors"
+    },
+    {
+        "code": "621320",
+        "title": "Offices of Optometrists"
+    },
+    {
+        "code": "621330",
+        "title": "Offices of Mental Health Practitioners"
+    },
+    {
+        "code": "621340",
+        "title": "Offices of Physical, Occupational, Speech Therapists, and Audiologists"
+    },
+    {
+        "code": "621399",
+        "title": "Offices of All Other Miscellaneous Health Practitioners"
+    },
+    {
+        "code": "621410",
+        "title": "Family Planning Centers"
+    },
+    {
+        "code": "621420",
+        "title": "Outpatient Mental Health and Substance Abuse Centers"
+    },
+    {
+        "code": "722511",
+        "title": "Full-Service Restaurants"
+    },
+    {
+        "code": "722513",
+        "title": "Limited-Service Restaurants"
+    },
+    {
+        "code": "722514",
+        "title": "Cafeterias, Grill Buffets, and Buffets"
+    },
+    {
+        "code": "722515",
+        "title": "Snack and Nonalcoholic Beverage Bars"
+    },
+    {
+        "code": "721110",
+        "title": "Hotels (except Casino Hotels) and Motels"
+    },
+    {
+        "code": "238210",
+        "title": "Electrical Contractors and Other Wiring Installation Contractors"
+    },
+    {
+        "code": "238220",
+        "title": "Plumbing, Heating, and Air-Conditioning Contractors"
+    },
+    {
+        "code": "454110",
+        "title": "Electronic Shopping and Mail-Order Houses"
+    },
+    {
+        "code": "441110",
+        "title": "New Car Dealers"
+    },
+    {
+        "code": "441120",
+        "title": "Used Car Dealers"
+    },
+    {
+        "code": "445110",
+        "title": "Supermarkets and Other Grocery Stores"
+    },
+    {
+        "code": "445120",
+        "title": "Convenience Stores"
+    },
+    {
+        "code": "453998",
+        "title": "All Other Miscellaneous Store Retailers"
+    },
+    {
+        "code": "611310",
+        "title": "Colleges, Universities, and Professional Schools"
+    },
+    {
+        "code": "611110",
+        "title": "Elementary and Secondary Schools"
+    },
+    {
+        "code": "611210",
+        "title": "Junior Colleges"
+    },
+    {
+        "code": "611410",
+        "title": "Business and Secretarial Schools"
+    },
+    {
+        "code": "611420",
+        "title": "Computer Training"
+    },
+    {
+        "code": "611430",
+        "title": "Professional and Management Development Training"
+    },
+    {
+        "code": "611511",
+        "title": "Cosmetology and Barber Schools"
+    },
+    {
+        "code": "611610",
+        "title": "Fine Arts Schools"
+    },
+    {
+        "code": "611620",
+        "title": "Sports and Recreation Instruction"
+    },
+    {
+        "code": "611691",
+        "title": "Exam Preparation and Tutoring"
+    },
+    {
+        "code": "611710",
+        "title": "Educational Support Services"
+    },
+    {
+        "code": "541810",
+        "title": "Advertising Agencies"
+    },
+    {
+        "code": "541820",
+        "title": "Public Relations Agencies"
+    },
+    {
+        "code": "541830",
+        "title": "Media Buying Agencies"
+    },
+    {
+        "code": "541840",
+        "title": "Media Representatives"
+    },
+    {
+        "code": "541850",
+        "title": "Outdoor Advertising"
+    },
+    {
+        "code": "541860",
+        "title": "Direct Mail Advertising"
+    },
+    {
+        "code": "541870",
+        "title": "Advertising Material Distribution Services"
+    },
+    {
+        "code": "541890",
+        "title": "Other Services Related to Advertising"
+    },
+    {
+        "code": "541910",
+        "title": "Marketing Research and Public Opinion Polling"
+    },
+    {
+        "code": "541921",
+        "title": "Photography Studios, Portrait"
+    },
+    {
+        "code": "541922",
+        "title": "Commercial Photography"
+    },
+    {
+        "code": "541930",
+        "title": "Translation and Interpretation Services"
+    },
+    {
+        "code": "541940",
+        "title": "Veterinary Services"
+    },
+    {
+        "code": "541990",
+        "title": "All Other Professional, Scientific, and Technical Services"
+    }
+]

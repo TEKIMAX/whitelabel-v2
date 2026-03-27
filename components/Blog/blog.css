@@ -1,0 +1,783 @@
+/* CSS Variables for theming
+   THEME SWITCHER: Default theme is "tan". To change default, edit src/context/ThemeContext.tsx
+   Available themes: dark, light, tan, cloud */
+:root[data-theme="dark"] {
+    --bg-primary: #111111;
+    --bg-secondary: #1a1a1a;
+    --bg-hover: #252525;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1a1;
+    --text-muted: #6b6b6b;
+    --border-color: #2a2a2a;
+    --accent: #fafafa;
+    --accent-hover: #e5e5e5;
+    --link-color: #fafafa;
+    --link-hover: #a1a1a1;
+    --code-bg: #1e1e1e;
+    --code-border: #2a2a2a;
+    --inline-code-bg: #2a2a2a;
+    --blockquote-border: #3a3a3a;
+    --blockquote-bg: #1a1a1a;
+}
+
+:root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-hover: #f5f5f5;
+    --text-primary: #111111;
+    --text-secondary: #6b6b6b;
+    --text-muted: #a1a1a1;
+    --border-color: #e5e5e5;
+    --accent: #111111;
+    --accent-hover: #333333;
+    --link-color: #111111;
+    --link-hover: #6b6b6b;
+    --code-bg: #f5f5f5;
+    --code-border: #e5e5e5;
+    --inline-code-bg: #f0f0f0;
+    --blockquote-border: #e5e5e5;
+    --blockquote-bg: #fafafa;
+}
+
+:root[data-theme="tan"] {
+    --bg-primary: #faf8f5;
+    --bg-secondary: #f5f3f0;
+    --bg-hover: #ebe9e6;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b6b6b;
+    --text-muted: #999999;
+    --border-color: #e6e4e1;
+    --accent: #8b7355;
+    --accent-hover: #735f47;
+    --link-color: #8b7355;
+    --link-hover: #6b5a45;
+    --code-bg: #f0ece4;
+    --code-border: #e6e4e1;
+    --inline-code-bg: #ebe7df;
+    --blockquote-border: #d4cfc6;
+    --blockquote-bg: #f5f3f0;
+}
+
+/* Cloud theme - soft gray aesthetic */
+:root[data-theme="cloud"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ebebeb;
+    --bg-hover: #e0e0e0;
+    --text-primary: #171717;
+    --text-secondary: #525252;
+    --text-muted: #737373;
+    --border-color: #d4d4d4;
+    --accent: #171717;
+    --accent-hover: #404040;
+    --link-color: #171717;
+    --link-hover: #525252;
+    --code-bg: #e5e5e5;
+    --code-border: #d4d4d4;
+    --inline-code-bg: #e0e0e0;
+    --blockquote-border: #a3a3a3;
+    --blockquote-bg: #ebebeb;
+}
+
+/* Base style overrides for blog container to ensure isolation if needed */
+.blog-container {
+    font-family:
+        "New York",
+        -apple-system-ui-serif,
+        ui-serif,
+        Georgia,
+        Cambria,
+        "Times New Roman",
+        Times,
+        serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+    min-height: 100vh;
+}
+
+/* Layout */
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* Top navigation bar */
+.top-nav {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Page navigation links (About, Projects, Contact, etc.) */
+.page-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.page-nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.page-nav-link:hover {
+    color: var(--text-primary);
+}
+
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-hover);
+}
+
+/* Home page styles */
+.home {
+    padding-top: 10px;
+}
+
+.home-header {
+    margin-bottom: 40px;
+}
+
+/* Site logo on homepage */
+.home-logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.home-name {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.home-intro,
+.home-bio {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.home-featured {
+    margin: 24px 0;
+}
+
+.home-featured-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.home-featured-list {
+    list-style: none;
+    margin-left: 8px;
+}
+
+.home-featured-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 6px;
+}
+
+.home-featured-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.home-featured-link {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.home-featured-link:hover {
+    color: var(--text-secondary);
+}
+
+.home-cta {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-top: 20px;
+}
+
+.home-text-link {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.home-text-link:hover {
+    color: var(--text-secondary);
+}
+
+.external-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 2px;
+    opacity: 0.7;
+}
+
+.home-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 40px 0;
+}
+
+/* Post list styles */
+.post-list {
+    margin-top: 20px;
+}
+
+.post-year-group {
+    margin-bottom: 24px;
+}
+
+.year-heading {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.posts {
+    list-style: none;
+}
+
+.post-item {
+    margin-bottom: 4px;
+}
+
+.post-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.post-link:hover {
+    opacity: 0.7;
+}
+
+/* Post list item title (on home page) */
+.post-link .post-title {
+    font-size: 16px;
+    font-weight: 400;
+    flex: 1;
+    min-width: 0;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.post-read-time {
+    color: var(--text-muted);
+}
+
+.post-date {
+    color: var(--text-muted);
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Footer styles */
+.home-footer {
+    padding: 20px 0;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-link {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.social-link:hover {
+    color: var(--text-primary);
+}
+
+/* Post page styles */
+.post-page {
+    padding-top: 20px;
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* Copy Page Dropdown Styles */
+.copy-page-dropdown {
+    position: relative;
+}
+
+.copy-page-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.copy-page-trigger:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+
+.dropdown-chevron {
+    transition: transform 0.15s ease;
+}
+
+.dropdown-chevron.open {
+    transform: rotate(180deg);
+}
+
+.copy-page-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 280px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    overflow: hidden;
+    animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.copy-page-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.copy-page-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.copy-page-item:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.copy-page-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.copy-page-item:hover .copy-page-icon {
+    color: var(--text-secondary);
+}
+
+.copy-page-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.copy-page-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.external-arrow {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.copy-page-item-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 12px;
+    margin-left: -12px;
+    border-radius: 6px;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.back-button:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-hover);
+}
+
+.post-article {
+    max-width: 100%;
+}
+
+.post-header {
+    margin-bottom: 48px;
+}
+
+/* Post page article title */
+.post-header .post-title {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.post-meta-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.post-meta-separator {
+    color: var(--text-muted);
+}
+
+.post-description {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+/* Blog post content styles */
+.blog-post-content {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.blog-post-content p {
+    margin-bottom: 24px;
+}
+
+.blog-h1 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 48px 0 24px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.blog-h2 {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 40px 0 20px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+.blog-h3 {
+    font-size: 18px;
+    font-weight: 300;
+    margin: 32px 0 16px;
+    line-height: 1.4;
+}
+
+.blog-h4 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 24px 0 12px;
+    line-height: 1.4;
+}
+
+.blog-h5 {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 20px 0 10px;
+    line-height: 1.4;
+}
+
+.blog-link {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.blog-link:hover {
+    color: var(--link-hover);
+}
+
+.blog-ul,
+.blog-ol {
+    margin: 0 0 24px 24px;
+}
+
+.blog-li {
+    margin-bottom: 8px;
+}
+
+.blog-li::marker {
+    color: var(--text-muted);
+}
+
+.blog-blockquote {
+    border-left: 3px solid var(--blockquote-border);
+    background-color: var(--blockquote-bg);
+    padding: 16px 20px;
+    margin: 24px 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.blog-blockquote p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.blog-hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 48px 0;
+}
+
+/* Code styles */
+.code-block-wrapper {
+    position: relative;
+    margin: 24px 0;
+}
+
+.code-language {
+    position: absolute;
+    top: 8px;
+    right: 44px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+}
+
+/* Copy button for code blocks */
+.code-copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    opacity: 0;
+    transition:
+        opacity 0.15s ease,
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+.code-block-wrapper:hover .code-copy-button {
+    opacity: 1;
+}
+
+.code-copy-button:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+
+.code-copy-button:active {
+    transform: scale(0.95);
+}
+
+.inline-code {
+    background-color: var(--inline-code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family:
+        SF Mono,
+        Monaco,
+        Cascadia Code,
+        Roboto Mono,
+        Consolas,
+        monospace;
+    font-size: 0.9em;
+}
+
+/* Image styles */
+.blog-image-wrapper {
+    display: block;
+    margin: 32px 0;
+}
+
+.blog-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.blog-image-caption {
+    display: block;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 12px;
+}
+
+/* Post footer styles */
+.post-footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+.post-share {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.share-button:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.post-tag {
+    font-size: 13px;
+    color: var(--text-muted);
+    background-color: var(--bg-secondary);
+    padding: 4px 12px;
+    border-radius: 16px;
+}
+
+/* Loading and error states */
+.loading,
+.no-posts,
+.post-loading,
+.post-not-found {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}

@@ -1,0 +1,16 @@
+name = "ai-proxy"
+main = "ai-proxy.js"
+compatibility_date = "2024-01-01"
+
+# Production route
+routes = [
+  { pattern = "ai.adaptivestartup.io/*", zone_name = "adaptivestartup.io" }
+]
+
+[vars]
+# Non-sensitive variables (API_KEY should be set as a secret)
+TARGET_URL = "https://llm-backend-922336218060.us-central1.run.app"
+
+# To set the API key as a secret, run:
+# wrangler secret put API_KEY
+# Then paste: AS_prod_dtZx6NGgJBt9c5gjmfW3mB91Olu4knUjCL8T1XokjT1atC4VWaiMgrxTuOZuEV

@@ -1,0 +1,88 @@
+name: Provision Convex
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_id:
+        description: 'Deployment ID from orchestrator'
+        required: true
+      convex_team_id:
+        description: 'Convex team ID'
+        required: true
+      deploy_key:
+        description: 'Convex deploy key'
+        required: true
+      webhook_url:
+        description: 'Callback URL for status updates'
+        required: false
+      callback_secret:
+        description: 'Secret for authenticating webhook callbacks'
+        required: false
+      action:
+        description: 'Action to perform (deploy or delete)'
+        required: false
+        default: 'deploy'
+
+jobs:
+  provision:
+    if: ${{ github.event.inputs.action != 'delete' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout whitelabel source
+        uses: actions/checkout@v4
+        with:
+          ref: prod
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Deploy Convex schema
+        env:
+          CONVEX_DEPLOY_KEY: ${{ github.event.inputs.deploy_key }}
+        run: npx convex deploy
+
+      - name: Report success
+        if: success() && github.event.inputs.webhook_url != ''
+        run: |
+          curl -s -X POST "${{ github.event.inputs.webhook_url }}" \
+            -H "Content-Type: application/json" \
+            -H "X-Callback-Secret: ${{ github.event.inputs.callback_secret }}" \
+            -d '{
+              "deployment_id": "${{ github.event.inputs.deployment_id }}",
+              "status": "convex_ready"
+            }'
+
+      - name: Report failure
+        if: failure() && github.event.inputs.webhook_url != ''
+        run: |
+          curl -s -X POST "${{ github.event.inputs.webhook_url }}" \
+            -H "Content-Type: application/json" \
+            -H "X-Callback-Secret: ${{ github.event.inputs.callback_secret }}" \
+            -d '{
+              "deployment_id": "${{ github.event.inputs.deployment_id }}",
+              "status": "failed",
+              "error": "Convex schema deploy failed — check GitHub Actions logs"
+            }'
+
+  delete:
+    if: ${{ github.event.inputs.action == 'delete' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report deletion acknowledged
+        if: github.event.inputs.webhook_url != ''
+        run: |
+          curl -s -X POST "${{ github.event.inputs.webhook_url }}" \
+            -H "Content-Type: application/json" \
+            -H "X-Callback-Secret: ${{ github.event.inputs.callback_secret }}" \
+            -d '{
+              "deployment_id": "${{ github.event.inputs.deployment_id }}",
+              "status": "deleted"
+            }'

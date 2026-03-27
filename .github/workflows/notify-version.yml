@@ -1,0 +1,49 @@
+name: Notify Version Update
+on:
+  push:
+    branches: [prod]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for commit list
+
+      - name: Get commit info
+        id: info
+        run: |
+          SHA=$(git rev-parse --short HEAD)
+          FULL_SHA=$(git rev-parse HEAD)
+          MESSAGE=$(git log -1 --pretty=%s)
+          AUTHOR=$(git log -1 --pretty=%an)
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "full_sha=$FULL_SHA" >> "$GITHUB_OUTPUT"
+          echo "message=$MESSAGE" >> "$GITHUB_OUTPUT"
+          echo "author=$AUTHOR" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Provision API of new version
+        env:
+          PROVISION_API_URL: ${{ secrets.PROVISION_API_URL }}
+          PROVISION_API_KEY: ${{ secrets.PROVISION_API_KEY }}
+        run: |
+          if [ -z "$PROVISION_API_URL" ] || [ -z "$PROVISION_API_KEY" ]; then
+            echo "⚠️  PROVISION_API_URL or PROVISION_API_KEY not set — skipping notification"
+            exit 0
+          fi
+
+          curl -s -X POST "${PROVISION_API_URL}/api/versions/notify" \
+            -H "Content-Type: application/json" \
+            -H "X-API-Key: ${PROVISION_API_KEY}" \
+            -d '{
+              "templateSlug": "adaptivestartup",
+              "version": "${{ steps.info.outputs.full_sha }}",
+              "shortVersion": "${{ steps.info.outputs.sha }}",
+              "message": "${{ steps.info.outputs.message }}",
+              "author": "${{ steps.info.outputs.author }}",
+              "branch": "prod"
+            }'
+          echo ""
+          echo "✅ Version notification sent: ${{ steps.info.outputs.sha }}"

@@ -1,0 +1,10 @@
+{
+    "auth": {
+        "workos": {
+            "enabled": true,
+            "clientId": "env:WORKOS_CLIENT_ID",
+            "clientSecret": "env:WORKOS_CLIENT_SECRET",
+            "issuer": "env:WORKOS_ISSUER_URL"
+        }
+    }
+}

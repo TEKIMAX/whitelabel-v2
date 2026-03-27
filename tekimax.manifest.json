@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "meta": {
+    "template_id": "core_b2b_saas",
+    "name": "Tekimax Reference Whitelabel",
+    "description": "The canonical B2B React template powered by Convex and WorkOS.",
+    "author": "Tekimax"
+  },
+  "infrastructure": {
+    "database_type": "convex",
+    "requires_b2b_identity": true,
+    "deployment_target": "cloudflare_pages",
+    "required_secrets": [
+      "CONVEX_DEPLOYMENT",
+      "VITE_CONVEX_URL",
+      "BRAIN_SHARED_SECRET",
+      "VITE_WORKOS_CLIENT_ID",
+      "PORTAL_CLIENT_ID",
+      "STRIPE_KEY",
+      "STRIPE_WEBHOOK_SECRET"
+    ]
+  },
+  "portalUI": {
+    "sync_endpoints": {
+      "pages": "/sync-page-configs",
+      "models": "/api/sync-model-config",
+      "branding": "/api/sync-branding",
+      "custom_apis": "/api/sync-api-tools"
+    },
+    "pages": [
+      { "pageKey": "STARTUP_OVERVIEW", "category": "Overview", "label": "Startup Overview", "icon": "Activity", "sortOrder": 10, "defaultVisible": true },
+      { "pageKey": "SETTINGS", "category": "Overview", "label": "Settings", "icon": "Settings", "sortOrder": 20, "defaultVisible": true },
+      { "pageKey": "NOTIFICATIONS", "category": "Overview", "label": "Notifications", "icon": "Bell", "sortOrder": 30, "defaultVisible": true },
+      { "pageKey": "MARKET_RESEARCH", "category": "Strategy", "label": "Market Research", "icon": "Search", "sortOrder": 40, "defaultVisible": true },
+      { "pageKey": "BOTTOM_UP_SIZING", "category": "Strategy", "label": "Bottom Up Sizing", "icon": "BarChart", "sortOrder": 50, "defaultVisible": true },
+      { "pageKey": "CUSTOMERS", "category": "Strategy", "label": "Customers", "icon": "Users", "sortOrder": 60, "defaultVisible": true },
+      { "pageKey": "COMPETITIVE_MATRIX", "category": "Strategy", "label": "Competitive Matrix", "icon": "Crosshair", "sortOrder": 70, "defaultVisible": true },
+      { "pageKey": "CANVAS_LANDING", "category": "Strategy", "label": "Canvas Landing", "icon": "FileText", "sortOrder": 80, "defaultVisible": true },
+      { "pageKey": "CANVAS", "category": "Strategy", "label": "Canvas", "icon": "FileText", "sortOrder": 90, "defaultVisible": true },
+      { "pageKey": "GOALS", "category": "Strategy", "label": "Goals", "icon": "Target", "sortOrder": 100, "defaultVisible": true },
+      { "pageKey": "CALENDAR", "category": "Strategy", "label": "Calendar", "icon": "Calendar", "sortOrder": 110, "defaultVisible": true },
+      { "pageKey": "BUSINESS_PLAN_BUILDER", "category": "Strategy", "label": "Business Plan Builder", "icon": "FileText", "sortOrder": 120, "defaultVisible": true },
+      { "pageKey": "JOURNEY", "category": "Strategy", "label": "Journey", "icon": "Map", "sortOrder": 130, "defaultVisible": true },
+      { "pageKey": "WORKSPACE", "category": "Operations", "label": "Workspace", "icon": "Briefcase", "sortOrder": 140, "defaultVisible": true },
+      { "pageKey": "EISENHOWER", "category": "Operations", "label": "Eisenhower Matrix", "icon": "Grid", "sortOrder": 150, "defaultVisible": true },
+      { "pageKey": "TEAM", "category": "Operations", "label": "Team", "icon": "Users", "sortOrder": 160, "defaultVisible": true },
+      { "pageKey": "FILES", "category": "Operations", "label": "Files", "icon": "Folder", "sortOrder": 170, "defaultVisible": true },
+      { "pageKey": "LEGAL", "category": "Operations", "label": "Legal", "icon": "Shield", "sortOrder": 180, "defaultVisible": true },
+      { "pageKey": "FORECASTING", "category": "Financials", "label": "Forecasting", "icon": "TrendingUp", "sortOrder": 190, "defaultVisible": true },
+      { "pageKey": "REVENUE", "category": "Financials", "label": "Revenue", "icon": "DollarSign", "sortOrder": 200, "defaultVisible": true },
+      { "pageKey": "EXPENSES", "category": "Financials", "label": "Expenses", "icon": "TrendingDown", "sortOrder": 210, "defaultVisible": true },
+      { "pageKey": "TOKEN_PRICING", "category": "Financials", "label": "Token Pricing", "icon": "Coins", "sortOrder": 220, "defaultVisible": true },
+      { "pageKey": "AI_ASSISTANT", "category": "AI Modules", "label": "AI Assistant", "icon": "Brain", "sortOrder": 230, "defaultVisible": true },
+      { "pageKey": "HUMAN_AI_COOPERATION", "category": "AI Modules", "label": "Human AI Cooperation", "icon": "Users", "sortOrder": 240, "defaultVisible": true }
+    ]
+  }
+}
