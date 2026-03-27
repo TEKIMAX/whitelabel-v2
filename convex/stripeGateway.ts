@@ -27,15 +27,17 @@ export const createStripeGateway = (stripeCustomerId?: string) => {
     return createOpenAI({
         apiKey: stripeAIGatewayKey,
         baseURL: "https://llm.stripe.com",
-        compatibility: 'compatible', // Force chat completions format — Stripe does not support the Responses API body format
         headers: headers,
         fetch: async (input: RequestInfo | URL, init?: RequestInit | undefined) => {
             // Unpack input pathing exactly explicitly to bypass edge Request object caching
             const rawUrl = typeof input === 'string' ? input : (input instanceof Request ? input.url : input.toString());
             let urlString = rawUrl;
-            
+
+            // Track if this was a Responses API request so we can transform the body
+            const wasResponsesApi = urlString.includes('/responses');
+
             // Override Vercel AI SDK's new /responses or /v1/chat/completions logic
-            if (urlString.includes('/responses') || urlString.includes('/v1/chat/completions') || urlString.includes('/completions')) {
+            if (wasResponsesApi || urlString.includes('/v1/chat/completions') || urlString.includes('/completions')) {
                 urlString = "https://llm.stripe.com/chat/completions";
             }
 
@@ -43,9 +45,28 @@ export const createStripeGateway = (stripeCustomerId?: string) => {
 
             // Stripe Gateway requires 'max_tokens' for Anthropic models, but AI SDK v3 may send 'max_completion_tokens'
             // However, OpenAI's latest models (like o1, o3, gpt-5) STRICTLY require 'max_completion_tokens' and reject 'max_tokens'.
+            // Additionally, ai v6 + @ai-sdk/openai v3 uses Responses API body format (input:[]) which Stripe does not support —
+            // transform to Chat Completions format (messages:[]) when the original request was a /responses call.
             if (init && init.body && typeof init.body === 'string') {
                 try {
                     const parsedBody = JSON.parse(init.body);
+
+                    // Transform Responses API body → Chat Completions body
+                    if (wasResponsesApi) {
+                        if (parsedBody.input && !parsedBody.messages) {
+                            parsedBody.messages = parsedBody.input;
+                            delete parsedBody.input;
+                        }
+                        if (parsedBody.max_output_tokens !== undefined && parsedBody.max_tokens === undefined) {
+                            parsedBody.max_tokens = parsedBody.max_output_tokens;
+                            delete parsedBody.max_output_tokens;
+                        }
+                        // Remove Responses-API-only fields Stripe won't understand
+                        delete parsedBody.store;
+                        delete parsedBody.output;
+                        delete parsedBody.truncation;
+                        delete parsedBody.previous_response_id;
+                    }
                     const isOpenAI = parsedBody.model && parsedBody.model.startsWith('openai/');
                     
                     if (!isOpenAI) {
